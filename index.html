@@ -1,590 +1,654 @@
 <!doctype html>
 <html lang="zh-cmn-Hans">
-  <head>
+<head>
     <title>HDU课程目录+</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="asserts/css/style.css">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--  <link rel="stylesheet" href="asserts/css/http_stackpath.bootstrapcdn.com_bootstrap_4.3.1_css_bootstrap.css">-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <!--  <link rel="stylesheet" href="asserts/css/http_use.fontawesome.com_releases_v5.6.3_css_all.css">-->
+    <!---->
+    <!--  <link rel="stylesheet" href="asserts/css/style.css">-->
+    <!---->
     <!-- Bootstrap-Table CSS -->
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+    <!--  <link rel="stylesheet" href="asserts/css/http_unpkg.com_bootstrap-table@1.15.5_dist_bootstrap-table.css">-->
     <link rel="stylesheet" href="asserts/css/bootstrap-table-filter-control.css">
-  </head>
-  <body>
-      <header>
-            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"> <a class="navbar-brand" href="javascript:location.reload();">HDU课程目录+</a>
-                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                  <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"> <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Link</a> </li>
-                    <li class="nav-item"> <a class="nav-link disabled" href="#">Disabled</a> </li>
-                  </ul>
-                </div> -->
-              </nav>
-      </header>
-      <!-- <div class="container" style="padding: 60px 15px 0;"> -->
-      <div style="padding: 60px 15px 0;">
-          <div class="row">
-            <div class="col-12 col-sm-12 col-lg-12 col-xl-12">
-            <!-- <div class="col-8 col-sm-8 col-lg-8 col-xl-8">               -->
-              <div id="toolbar">
-                <!-- <button id="remove" class="btn btn-danger" disabled>
-                  <i class="glyphicon glyphicon-remove"></i> Delete 
-                </button> -->
-                <button id="likelist" class="btn btn-success" data-toggle="modal" data-target="#likeModal">课程收藏夹</button>
-                <button id="likelist" class="btn btn-outline-success" onclick="addlike();">加入收藏</button>
-                <!-- <button id="filter" class="btn btn-primary" onclick="filteroc();">打开筛选</button> -->
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><a class="navbar-brand"
+                                                                          href="javascript:location.reload();">HDU课程目录++</a>
+    </nav>
+</header>
+<div style="padding: 60px 15px 0;">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-lg-12 col-xl-12">
+            <div id="toolbar">
+                <button id="likelist" class="btn btn-success" data-toggle="modal" data-target="#likeModal">课程收藏夹
+                </button>
+                <button id="likelist2" class="btn btn-outline-success" onclick="addlike();">加入收藏</button>
                 <button id="filter" class="btn btn-primary" onclick="filterreset();">重置筛选</button>
-              </div>
-              <table
-                id="table"
-                data-toolbar="#toolbar"
-                data-search="true"
-                data-show-refresh="false"
-                data-show-toggle="false"
-                data-show-fullscreen="true"
-                data-show-columns="true"
-                data-show-columns-toggle-all="true"
-                data-detail-view="true"
-                data-show-export="false"
-                data-click-to-select="true"
-                data-detail-formatter="detailFormatter"
-                data-minimum-count-columns="2"
-                data-show-pagination-switch="false"
-                data-pagination="true"
-                data-id-field="id"
-                data-page-list="[10, 25, 50, 100]"
-                data-show-footer="false"
-                data-side-pagination="client"
-                data-url="data/json/2019-2020-2_split.json"
-                data-response-handler="responseHandler"
-                data-filter-control="true"
-                visible-search="true"
-                data-search-on-enter-key="true">
-              </table>
+            </div>
+            <table
+                    id="table"
+                    data-toolbar="#toolbar"
+                    data-search="true"
+                    data-show-refresh="false"
+                    data-show-toggle="false"
+                    data-show-fullscreen="true"
+                    data-show-columns="true"
+                    data-show-columns-toggle-all="true"
+                    data-detail-view="true"
+                    data-show-export="false"
+                    data-click-to-select="true"
+                    data-detail-formatter="detailFormatter"
+                    data-minimum-count-columns="2"
+                    data-show-pagination-switch="false"
+                    data-pagination="true"
+                    data-id-field="id"
+                    data-page-list="[25, 50, 100, 200, 500]"
+                    data-show-footer="false"
+                    data-side-pagination="client"
+                    data-url="data/json/2021new.json"
+                    data-response-handler="responseHandler"
+                    data-filter-control="true"
+                    visible-search="true"
+                    data-search-on-enter-key="true">
+            </table>
 
-              <!-- Modal -->
-              <div class="modal fade" id="likeModal" tabindex="-1" role="dialog" aria-labelledby="likeModalLabel" aria-hidden="true">
+            <!-- Modal -->
+            <div class="modal fade" id="likeModal" tabindex="-1" role="dialog" aria-labelledby="likeModalLabel"
+                 aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="likeModalLabel">课程收藏夹</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="likeModalLabel">课程收藏夹</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="liketoolbar">
+                                <button id="likeremove" class="btn btn-danger">删除收藏</button>
+                            </div>
+                            <table
+                                    id="liketable"
+                                    data-toolbar="#liketoolbar"
+                                    data-search="false"
+                                    data-show-refresh="false"
+                                    data-show-toggle="false"
+                                    data-show-fullscreen="true"
+                                    data-show-columns="true"
+                                    data-show-columns-toggle-all="true"
+                                    data-detail-view="true"
+                                    data-show-export="true"
+                                    data-click-to-select="true"
+                                    data-detail-formatter="detailFormatter"
+                                    data-minimum-count-columns="2"
+                                    data-show-pagination-switch="false"
+                                    data-pagination="true"
+                                    data-id-field="id"
+                                    data-page-list="[10, 25, 50, 100, all]"
+                                    data-show-footer="false"
+                                    data-side-pagination="client"
+                                    data-response-handler="responseHandler">
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                      <div id="liketoolbar">
-                        <button id="likeremove" class="btn btn-danger">删除收藏</button>
-                      </div>
-                      <table
-                        id="liketable"
-                        data-toolbar="#liketoolbar"
-                        data-search="false"
-                        data-show-refresh="false"
-                        data-show-toggle="false"
-                        data-show-fullscreen="true"
-                        data-show-columns="true"
-                        data-show-columns-toggle-all="true"
-                        data-detail-view="true"
-                        data-show-export="true"
-                        data-click-to-select="true"
-                        data-detail-formatter="detailFormatter"
-                        data-minimum-count-columns="2"
-                        data-show-pagination-switch="false"
-                        data-pagination="true"
-                        data-id-field="id"
-                        data-page-list="[10, 25, 50, 100, all]"
-                        data-show-footer="false"
-                        data-side-pagination="client"
-                        data-response-handler="responseHandler">
-                      </table>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                      <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                    </div>
-                  </div>
                 </div>
-              </div>
-
-              <!-- Warning Modal -->
-              <div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="warningModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="warningModalLabel">提示</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body" id="warningcontent">
-                      Warning Content Here.
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Info Modal -->
-              <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="infoModalLabel">使用前提示</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body" id="infocontent">
-                      <ul>
-                        <li>
-                          <b>关于数据：</b>
-                          数据来自<a href="http://jxgl.hdu.edu.cn/jxrwcx.aspx">教务处课程目录</a>，最新更新时间为<code>2019-12-18</code>。
-                          2019-2020-2学期课表已经排定，但课程信息仍可能有细微的更改，最终选课时请在教务系统校对信息。
-                        </li>  
-                        <li>
-                          <b>课程收藏夹：</b>
-                          通过「加入收藏」按钮将课程加入收藏夹，课程收藏夹窗口提供「导出」按钮，可将课程信息下载到本地。
-                        </li>  
-                        <li>
-                          <b>搜索及筛选：</b>
-                          通过主搜索框可以搜索所有可见列的信息。通过每一列的筛选框可以执行更详细的筛选。按「回车」执行搜索和筛选。
-                        </li>
-                        <li>
-                          <b>隐藏/显示列：</b>
-                          通过表格右上角的「隐藏/显示列」按钮选择显示的数据列。
-                        </li>
-                      </ul>
-                      
-                    </div>
-                    <div class="modal-footer">
-                      <span class="text-muted" >
-                        <span>© 2019 <a href="http://imztj.cn" target="_blank">章天杰</a></span>
-                        <span> · <a href="https://github.com/ztjryg4/HDUCourseCatalog" target="_blank">GitHub</a></span>
-                      </span>
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
 
-            <!-- <div class="col-4 col-sm-4 col-lg-4 col-xl-4">
-              
-            </div> -->
-          </div>
-      </div>
-      <!-- data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data" -->
-      <!-- <footer class="footer">
-            <div class="container"> <span class="text-muted">在这里放置粘性页脚内容</span>。 </div>
-      </footer> -->
+            <!-- Warning Modal -->
+            <div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="warningModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="warningModalLabel">提示</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="warningcontent">
+                            Warning Content Here.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
-    <script src="asserts/js/bootstrap-table-filter-control.js"></script>
-    <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table-locale-all.min.js"></script>
-    <script src="asserts/js/bootstrap-table-export.js"></script>
-    
+            <!-- Info Modal -->
+            <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="infoModalLabel">使用前提示</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="infocontent">
+                            <ul>
+                                <li>
+                                    <b>关于数据：</b>
+                                    数据来自<a
+                                        href="http://jxgl.hdu.edu.cn/jxrwcx.aspx">2021-01开课情况</a>，最新更新时间为<code>2021-06-29</code>。
+                                    2021-2012-1学期课表已经排定，但课程信息仍可能有细微的更改，最终选课时请在教务系统校对信息。
+                                </li>
+                                <li>
+                                    <b>课程收藏夹：</b>
+                                    通过「加入收藏」按钮将课程加入收藏夹，课程收藏夹窗口提供「导出」按钮，可将课程信息下载到本地。
+                                </li>
+                                <li>
+                                    <b>搜索及筛选：</b>
+                                    通过主搜索框可以搜索所有可见列的信息。通过每一列的筛选框可以执行更详细的筛选。按「回车」执行搜索和筛选。
+                                </li>
+                                <li>
+                                    <b>隐藏/显示列：</b>
+                                    通过表格右上角的「隐藏/显示列」按钮选择显示的数据列。
+                                </li>
+                            </ul>
 
-    <!-- 主表格 -->
-    <script>
-      var $table = $('#table')
-      var $remove = $('#remove')
-      var selections = []
-    
-      function getIdSelections() {
+                        </div>
+                        <div class="modal-footer">
+                      <span class="text-muted">
+                        <span>© 2021 <a href="http://blog.mjclouds.com" target="_blank">Wu JunYi </a></span>
+                        <span>Powered By <a href="http://imztj.cn" target="_blank">章天杰</a></span>
+                        <span> · <a href="https://github.com/ztjryg4/HDUCourseCatalog" target="_blank">GitHub</a></span>
+                      </span>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close">关闭</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <span class="text-muted"><span>© 2021 <a href="http://blog.mjclouds.com" target="_blank">Wu JunYi </a></span><span>Powered By <a href="http://imztj.cn" target="_blank">章天杰</a></span><span> · <a href="https://github.com/ztjryg4/HDUCourseCatalog" target="_blank">GitHub</a></span>
+    </span>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"-->
+<!--        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>-->
+<script src="asserts/js/http_code.jquery.com_jquery-3.3.1.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"-->
+<!--        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"-->
+<!--        crossorigin="anonymous"></script>-->
+<script src="asserts/js/http_cdnjs.cloudflare.com_ajax_libs_popper.js_1.14.7_umd_popper.js"></script>
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"-->
+<!--        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"-->
+<!--        crossorigin="anonymous"></script>-->
+<script src="asserts/js/http_stackpath.bootstrapcdn.com_bootstrap_4.3.1_js_bootstrap.js"></script>
+<!--<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>-->
+<script src="asserts/js/http_unpkg.com_bootstrap-table@1.15.5_dist_bootstrap-table.js"></script>
+<script src="asserts/js/bootstrap-table-filter-control.js"></script>
+<!--<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>-->
+<script src="asserts/js/http_unpkg.com_tableexport.jquery.plugin_tableExport.min.js"></script>
+<!--<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table-locale-all.min.js"></script>-->
+<script src="asserts/js/http_unpkg.com_bootstrap-table@1.15.5_dist_bootstrap-table-locale-all.js"></script>
+<script src="asserts/js/bootstrap-table-export.js"></script>
+
+
+<!-- 主表格 -->
+<script>
+    var $table = $('#table')
+    var $remove = $('#remove')
+    var selections = []
+
+    function getIdSelections() {
         return $.map($table.bootstrapTable('getSelections'), function (row) {
-          return row.id
+            return row.id
         })
-      }
-    
-      function responseHandler(res) {
+    }
+
+    function responseHandler(res) {
         $.each(res.rows, function (i, row) {
-          row.state = $.inArray(row.id, selections) !== -1
+            row.state = $.inArray(row.id, selections) !== -1
         })
         return res
-      }
-    
-      function detailFormatter(index, row) {
+    }
+
+    function detailFormatter(index, row) {
         var html = []
         $.each(row, function (key, value) {
-          html.push('<p><b>' + key + ':</b> ' + value + '</p>')
+            html.push('<p><b>' + key + ':</b> ' + value + '</p>')
         })
         return html.join('')
-      }
-    
-      function operateFormatter(value, row, index) {
+    }
+
+    function operateFormatter(value, row, index) {
         return [
-          '<a class="like" href="javascript:void(0)" title="Like">',
-          '<i class="fa fa-heart"></i>',
-          '</a>  ',
-          '<a class="remove" href="javascript:void(0)" title="Remove">',
-          '<i class="fa fa-trash"></i>',
-          '</a>'
+            '<a class="like" href="javascript:void(0)" title="Like">',
+            '<i class="fa fa-heart"></i>',
+            '</a>  ',
+            '<a class="remove" href="javascript:void(0)" title="Remove">',
+            '<i class="fa fa-trash"></i>',
+            '</a>'
         ].join('')
-      }
-    
-      window.operateEvents = {
+    }
+
+    window.operateEvents = {
         'click .like': function (e, value, row, index) {
-          alert('You click like action, row: ' + JSON.stringify(row))
+            alert('You click like action, row: ' + JSON.stringify(row))
         },
         'click .remove': function (e, value, row, index) {
-          $table.bootstrapTable('remove', {
-            field: 'id',
-            values: [row.id]
-          })
+            $table.bootstrapTable('remove', {
+                field: 'id',
+                values: [row.id]
+            })
         }
-      }
-     
-   
-      function initTable() {
+    }
+
+
+    function initTable() {
         $table.bootstrapTable('destroy').bootstrapTable({
-          height: $(window).height() - 60,
-          classes: 'table table-bordered table-hover table-sm',
-          locale: 'zh-CN',
-          columns:[[
-            {
-              field: 'state',
-              checkbox: true,
-              align: 'center',
-              valign: 'middle'
-            },
-            {
-              title:"开课状态",
-              field: 'status',
-              align: 'center',
-              sortable: false,
-              filterControl: 'select'
-            },
-            {
-              title:"课程名称",
-              field: 'coursename',
-              align: 'center',
-              sortable: false,
-              filterControl: 'input'
-            },
-            {
-              title:"学分",
-              field: 'credit',
-              align: 'center',
-              sortable: false,
-              filterControl: 'select'
-            },
-            {
-              title:"考核方式",
-              field: 'assessment',
-              align: 'center',
-              sortable: false,
-              filterControl: 'select'
-            },
-            {
-              title:"课程性质",
-              field: 'coursetype',
-              align: 'center',
-              sortable: false,
-              filterControl: 'select'
-            },
-            {
-              title:"任课教师",
-              field: 'teacher',
-              align: 'center',
-              sortable: false,
-              filterControl: 'input'
-            },
-            {
-              title:"选课代码",
-              field: 'coursecode',
-              align: 'center',
-              sortable: true,
-              visible: false,
-              filterControl: 'input'
-            },
-            {
-              title:"起止周",
-              field: 'duration',
-              align: 'center',
-              sortable: false,
-              filterControl: 'select'
-            },
-            {
-              title:"上课时间",
-              field: 'time',
-              align: 'center',
-              sortable: false,
-              filterControl: 'input'
-            },
-            
-            {
-              title:"上课地点",
-              field: 'place',
-              align: 'center',
-              sortable: false,
-              filterControl: 'input'
-            },            
-            {
-              title:"开课学院",
-              field: 'school',
-              align: 'center',
-              sortable: false,
-              filterControl: 'select'
-            },
-            {
-              title:"合班信息",
-              field: 'arrangement',
-              align: 'center',
-              sortable: true,
-              visible: false,
-              width: 50,
-              widthUnit: 'px',
-              filterControl: 'input'
-            }]
-          ]
+            height: $(window).height() - 60,
+            classes: 'table table-bordered table-hover table-sm',
+            locale: 'zh-CN',
+            columns: [
+
+                {
+                    field: 'state',
+                    checkbox: true,
+                    align: 'center',
+                    valign: 'middle'
+                },
+                {
+                    title: "序号",
+                    field: '序号',
+                    visible: false,
+                    align: 'center',
+                },
+                {
+                    title: "学年",
+                    field: '学年',
+                    align: 'center',
+                    sortable: false,
+                    visible: false,
+                    filterControl: 'select'
+                },
+                {
+                    title: "学期",
+                    field: '学期',
+                    align: 'center',
+                    sortable: false,
+                    filterControl: 'select'
+                },
+                {
+                    title: "星期几",
+                    field: '星期几',
+                    align: 'center',
+                    sortable: true,
+                    filterControl: 'select'
+                },
+                {
+                    title: "上课节次",
+                    field: '上课节次',
+                    align: 'center',
+                    sortable: true,
+                    filterControl: 'select'
+                },
+                {
+                    title: "起始结束周",
+                    field: '起始结束周',
+                    align: 'center',
+                    sortable: true,
+                    filterControl: 'select'
+                },
+                {
+                    title: "场地上课起始周",
+                    field: '场地上课起始周',
+                    align: 'center',
+                    sortable: true,
+                    filterControl: 'input'
+                },
+                {
+                    title: "课程名称",
+                    field: '课程名称',
+                    align: 'center',
+                    sortable: false,
+                    filterControl: 'input'
+                },
+                {
+                    title: "教师姓名",
+                    field: '姓名',
+                    align: 'center',
+                    sortable: false,
+                    filterControl: 'input'
+                },
+                {
+                    title: "教师所属学院",
+                    field: '教师所属学院',
+                    align: 'center',
+                    sortable: false,
+                    filterControl: 'select'
+                },
+                {
+                    title: "学分",
+                    field: '学分',
+                    align: 'center',
+                    sortable: true,
+                    filterControl: 'select'
+                },
+                {
+                    title: "总学时",
+                    field: '总学时',
+                    align: 'center',
+                    sortable: true,
+                    filterControl: 'select'
+                },
+                {
+                    title: "开课学院",
+                    field: '开课学院',
+                    align: 'center',
+                    sortable: false,
+                    filterControl: 'select'
+                },
+                {
+                    title: "上课地点",
+                    field: '上课地点',
+                    align: 'center',
+                    sortable: false,
+                    filterControl: 'select'
+                },
+                {
+                    title: "课程性质",
+                    field: '课程性质',
+                    align: 'center',
+                    sortable: false,
+                    filterControl: 'select'
+                },
+                {
+                    title: "专业组成",
+                    field: '专业组成',
+                    align: 'center',
+                    sortable: true,
+                    visible: false,
+                    width: 200,
+                    widthUnit: 'px',
+                    filterControl: 'input'
+                }
+
+            ]
 
         })
         $table.on('check.bs.table uncheck.bs.table ' +
-          'check-all.bs.table uncheck-all.bs.table',
-        function () {
-          $remove.prop('disabled', !$table.bootstrapTable('getSelections').length)
-    
-          // save your data, here just save the current page
-          selections = getIdSelections()
-          // push or splice the selections if you want to save all data selections
-        })
+            'check-all.bs.table uncheck-all.bs.table',
+            function () {
+                $remove.prop('disabled', !$table.bootstrapTable('getSelections').length)
+
+                // save your data, here just save the current page
+                selections = getIdSelections()
+                // push or splice the selections if you want to save all data selections
+            })
         $table.on('all.bs.table', function (e, name, args) {
-          console.log(name, args)
+            // console.log(name, args)
         })
         $remove.click(function () {
-          var ids = getIdSelections()
-          $table.bootstrapTable('remove', {
-            field: 'id',
-            values: ids
-          })
-          $remove.prop('disabled', true)
+            var ids = getIdSelections()
+            $table.bootstrapTable('remove', {
+                field: 'id',
+                values: ids
+            })
+            $remove.prop('disabled', true)
         })
-      }
-    
-      $(function() {
+    }
+
+    $(function () {
         initTable()
         $("#infoModal").modal()
-      })
-    </script>
-    <!-- 收藏表格 -->
-    <script>
-      var $liketable = $('#liketable')
-      var $likeremove = $('#likeremove')
-      var selections = []
-    
-      function getIdSelections_like() {
+    })
+</script>
+<!-- 收藏表格 -->
+<script>
+    var $liketable = $('#liketable')
+    var $likeremove = $('#likeremove')
+    var selections = []
+
+    function getIdSelections_like() {
         return $.map($liketable.bootstrapTable('getSelections'), function (row) {
-          return row.coursecode
+            return row['序号']
         })
-      }
-    
-      function responseHandler_like(res) {
+    }
+
+    function responseHandler_like(res) {
         $.each(res.rows, function (i, row) {
-          row.state = $.inArray(row.id, selections) !== -1
+            row.state = $.inArray(row.id, selections) !== -1
         })
         return res
-      }
-    
-      function detailFormatter_like(index, row) {
+    }
+
+    function detailFormatter_like(index, row) {
         var html = []
         $.each(row, function (key, value) {
-          html.push('<p><b>' + key + ':</b> ' + value + '</p>')
+            html.push('<p><b>' + key + ':</b> ' + value + '</p>')
         })
         return html.join('')
-      }     
-   
-      function initTable_like() {
+    }
+
+    function initTable_like() {
         $liketable.bootstrapTable('destroy').bootstrapTable({
-          exportTypes : ['csv', 'txt', 'doc', 'excel'],
-          classes: 'table table-bordered table-hover table-sm',
-          locale: 'zh-CN',
-          columns:[[
-            {
-              field: 'state',
-              checkbox: true,
-              align: 'center',
-              valign: 'middle'
-            },
-            {
-              title:"开课状态",
-              field: 'status',
-              align: 'center',
-              sortable: false,
-              visible: false
-            },
-            {
-              title:"课程名称",
-              field: 'coursename',
-              align: 'center',
-              sortable: false,
-              visible: true
-            },
-            {
-              title:"学分",
-              field: 'credit',
-              align: 'center',
-              sortable: false,
-              visible: false
-            },
-            {
-              title:"考核方式",
-              field: 'assessment',
-              align: 'center',
-              sortable: false,
-              visible: false
-            },
-            {
-              title:"课程性质",
-              field: 'coursetype',
-              align: 'center',
-              sortable: false,
-              visible: false
-            },
-            {
-              title:"任课教师",
-              field: 'teacher',
-              align: 'center',
-              sortable: false,
-              visible: true
-            },
-            {
-              title:"选课代码",
-              field: 'coursecode',
-              align: 'center',
-              sortable: true,
-              visible: false,
-              visible: false
-            },
-            {
-              title:"起止周",
-              field: 'duration',
-              align: 'center',
-              sortable: false,
-              visible: false
-            },
-            {
-              title:"上课时间",
-              field: 'time',
-              align: 'center',
-              sortable: false,
-              visible: true
-            },
-            
-            {
-              title:"上课地点",
-              field: 'place',
-              align: 'center',
-              sortable: false,
-              visible: false
-            },            
-            {
-              title:"开课学院",
-              field: 'school',
-              align: 'center',
-              sortable: false,
-              visible: false
-            },
-            {
-              title:"合班信息",
-              field: 'arrangement',
-              align: 'center',
-              sortable: true,
-              visible: false,
-              width: 50,
-              widthUnit: 'px'
-            }]
-          ]
+            exportTypes: ['csv', 'txt', 'doc', 'excel'],
+            classes: 'table table-bordered table-hover table-sm',
+            locale: 'zh-CN',
+            columns: [
+                {
+                    field: 'state',
+                    checkbox: true,
+                    align: 'center',
+                    valign: 'middle'
+                },
+                {
+                    title: '序号',
+                    field: '序号',
+                    visible: false,
+
+                },
+                {
+                    title: "学年",
+                    field: '学年',
+                    align: 'center',
+                    sortable: false,
+                    visible: false,
+                },
+                {
+                    title: "学期",
+                    field: '学期',
+                    align: 'center',
+                    sortable: false,
+                    visible: false
+                },
+                {
+                    title: "星期几",
+                    field: '星期几',
+                    align: 'center',
+                    sortable: true,
+                    visible: true
+                },
+                {
+                    title: "上课节次",
+                    field: '上课节次',
+                    align: 'center',
+                    sortable: true,
+                    visible: true
+                },
+                {
+                    title: "起始结束周",
+                    field: '起始结束周',
+                    align: 'center',
+                    sortable: true,
+                    visible: true
+                },
+                {
+                    title: "场地上课起始周",
+                    field: '场地上课起始周',
+                    align: 'center',
+                    sortable: false,
+                    visible: false
+                },
+                {
+                    title: "课程名称",
+                    field: '课程名称',
+                    align: 'center',
+                    sortable: false,
+                    visible: true
+                },
+                {
+                    title: "教师姓名",
+                    field: '姓名',
+                    align: 'center',
+                    sortable: false,
+                    visible: true
+                },
+                {
+                    title: "教师所属学院",
+                    field: '教师所属学院',
+                    align: 'center',
+                    sortable: false,
+                    visible: false
+                },
+                {
+                    title: "学分",
+                    field: '学分',
+                    align: 'center',
+                    sortable: false,
+                    visible: true
+                },
+                {
+                    title: "总学时",
+                    field: '总学时',
+                    align: 'center',
+                    sortable: false,
+                    visible: false
+                },
+                {
+                    title: "开课学院",
+                    field: '开课学院',
+                    align: 'center',
+                    sortable: false,
+                    visible: false
+
+                },
+                {
+                    title: "上课地点",
+                    field: '上课地点',
+                    align: 'center',
+                    sortable: false,
+                    visible: false
+                },
+                {
+                    title: "课程性质",
+                    field: '课程性质',
+                    align: 'center',
+                    sortable: false,
+                    visible: true
+                },
+                {
+                    title: "专业组成",
+                    field: '专业组成',
+                    align: 'center',
+                    sortable: false,
+                    visible: false,
+                    width: 200,
+                    widthUnit: 'px',
+                }
+
+            ]
 
         })
 
         $liketable.on('check.bs.table uncheck.bs.table ' +
-          'check-all.bs.table uncheck-all.bs.table',
-        function () {
-          $likeremove.prop('disabled', !$liketable.bootstrapTable('getSelections').length)
-          // save your data, here just save the current page
-          selections = getIdSelections_like()
-          console.log(selections)
-          // push or splice the selections if you want to save all data selections
-        })
+            'check-all.bs.table uncheck-all.bs.table',
+            function () {
+                $likeremove.prop('disabled', !$liketable.bootstrapTable('getSelections').length)
+                // save your data, here just save the current page
+                selections = getIdSelections_like()
+                // console.log(selections)
+                // push or splice the selections if you want to save all data selections
+            })
         $liketable.on('all.bs.table', function (e, name, args) {
-          console.log(name, args)
+            // console.log(name, args)
         })
         $likeremove.click(function () {
-          var ids = getIdSelections_like()
-          $liketable.bootstrapTable('remove', {
-            field: 'coursecode',
-            values: ids
-          })
-          $likeremove.prop('disabled', true)
+            var ids = getIdSelections_like()
+            // console.log(ids);
+            $liketable.bootstrapTable('remove', {
+                field: '序号',
+                values: ids
+            })
+            $likeremove.prop('di    sabled', true)
         })
-      }
-    
-      $(function() {
+    }
+
+    $(function () {
         initTable_like()
         $('#locale').change(initTable_like)
-      })
-    </script>
-    <!-- 收藏筛选 -->
-    <script>
+    })
+</script>
+<!-- 收藏筛选 -->
+<script>
     function addlike() {
-      var data = $('#table').bootstrapTable('getAllSelections');
-      
-      
+        var data = $('#table').bootstrapTable('getAllSelections');
 
-      if (data.length) {
-        if (data[0]['teacher']=="王长军"){
-          $("#warningcontent").html('加入收藏失败，别选王长军。');
-          $("#warningModal").modal();
-          return
+
+        if (data.length) {
+            $("#likeModal").modal();
+            $('#table').bootstrapTable('uncheckAll');
+            $("#liketable").bootstrapTable("append", data);
+        } else {
+            $("#warningcontent").html('未选择任何课程！');
+            $("#warningModal").modal();
         }
-        $("#likeModal").modal();
-        $('#table').bootstrapTable('uncheckAll');
-        $("#liketable").bootstrapTable("append", data);
-      } else {
-        $("#warningcontent").html('未选择任何课程！');
-        $("#warningModal").modal();
-      }
-      
-      
-    }
-    function filteroc() {
-      var status = $('#filter').html()
-      if (status=='打开筛选'){
-        $('#filter').html("重置筛选");
-        $('#table').bootstrapTable('refreshOptions',{
-          filterControl: 'True'
-        });
-      } else {
-        $('#filter').html("打开筛选");
-        initTable()
-        // $('#locale').change(initTable)
-      }
-    }
-    function filterreset() {
-      initTable();
+
+
     }
 
-    $(window).resize(function() {
-      $('#table').bootstrapTable('resetView', {
+    function filteroc() {
+        var status = $('#filter').html()
+        if (status == '打开筛选') {
+            $('#filter').html("重置筛选");
+            $('#table').bootstrapTable('refreshOptions', {
+                filterControl: 'True'
+            });
+        } else {
+            $('#filter').html("打开筛选");
+            initTable()
+            // $('#locale').change(initTable)
+        }
+    }
+
+    function filterreset() {
+        initTable();
+    }
+
+    $(window).resize(function () {
+        $('#table').bootstrapTable('resetView', {
             height: $(window).height() - 60
         });
     });
-    </script>
-  </body>
+
+    $('#close').click(function () {
+        console.log("wwwwwwwwwww");
+        setTimeout(function () {
+            initTable()
+        }, 500)
+    })
+</script>
+</body>
 </html>
