@@ -53,7 +53,7 @@
                     data-show-pagination-switch="false"
                     data-pagination="true"
                     data-id-field="id"
-                    data-page-list="[25, 50, 100, 200, 500]"
+                    data-page-list="[10, 25, 50, 100, 200, 500]"
                     data-show-footer="false"
                     data-side-pagination="client"
                     data-url="data/json/2021new.json"
@@ -258,7 +258,7 @@
 
     function initTable() {
         $table.bootstrapTable('destroy').bootstrapTable({
-            height: $(window).height() - 60,
+            height: $(window).height() - 120,
             classes: 'table table-bordered table-hover table-sm',
             locale: 'zh-CN',
             columns: [
