@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!--  <link rel="stylesheet" href="asserts/css/http_stackpath.bootstrapcdn.com_bootstrap_4.3.1_css_bootstrap.css">-->
+    <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
+    <!--          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="asserts/css/http_stackpath.bootstrapcdn.com_bootstrap_4.3.1_css_bootstrap.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
           integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <!--  <link rel="stylesheet" href="asserts/css/http_use.fontawesome.com_releases_v5.6.3_css_all.css">-->
@@ -20,11 +20,13 @@
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
     <!--  <link rel="stylesheet" href="asserts/css/http_unpkg.com_bootstrap-table@1.15.5_dist_bootstrap-table.css">-->
     <link rel="stylesheet" href="asserts/css/bootstrap-table-filter-control.css">
+
+
 </head>
 <body>
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><a class="navbar-brand"
-                                                                          href="javascript:location.reload();">HDU课程目录++</a>
+                                                                          href="javascript:location.reload();">HDU课程目录+</a>
     </nav>
 </header>
 <div style="padding: 60px 15px 0;">
@@ -40,7 +42,7 @@
                     id="table"
                     data-toolbar="#toolbar"
                     data-search="true"
-                    data-show-refresh="false"
+                    data-show-refresh="true"
                     data-show-toggle="false"
                     data-show-fullscreen="true"
                     data-show-columns="true"
@@ -53,14 +55,16 @@
                     data-show-pagination-switch="false"
                     data-pagination="true"
                     data-id-field="id"
-                    data-page-list="[10, 25, 50, 100, 200, 500]"
+                    data-page-list="[25, 50, 100, 200, 500]"
+                    data-page-size="25"
                     data-show-footer="false"
                     data-side-pagination="client"
-                    data-url="data/json/2021new.json"
+                    data-url="https://hducourse.mjclouds.com/v1/getData"
                     data-response-handler="responseHandler"
                     data-filter-control="true"
                     visible-search="true"
-                    data-search-on-enter-key="true">
+                    data-search-on-enter-key="true"
+                    style="word-break:break-all">
             </table>
 
             <!-- Modal -->
@@ -143,10 +147,12 @@
                         <div class="modal-body" id="infocontent">
                             <ul>
                                 <li>
+                                    <b>显示：</b>
+                                    <text style="color: red">请在电脑端使用</text>
+                                </li>
+                                <li>
                                     <b>关于数据：</b>
-                                    数据来自<a
-                                        href="data/csv/2021-01raw.xlsx">2021-01开课情况</a>，最新更新时间为<code>2021-06-29</code>。
-                                    2021-2012-1学期课表已经排定，但课程信息仍可能有细微的更改，最终选课时请在教务系统校对信息。
+                                    数据来自教务系统，有延迟（一小时左右），仅包含课程基础信息，首次加载需要大约10秒
                                 </li>
                                 <li>
                                     <b>课程收藏夹：</b>
@@ -165,9 +171,9 @@
                         </div>
                         <div class="modal-footer">
                       <span class="text-muted">
-                        <span>© 2021 <a href="https://blog.mjclouds.com" target="_blank">Wu JunYi </a></span>
-                        <span>Powered By <a href="http://imztj.cn" target="_blank">章天杰</a></span>
-                        <span> · <a href="https://github.com/ztjryg4/HDUCourseCatalog" target="_blank">GitHub</a></span>
+<!--                        <span>© 2022 <a href="https://blog.mjclouds.com" target="_blank">Wu JunYi </a></span>-->
+<!--                        <span>Powered By <a href="http://imztj.cn" target="_blank">章天杰</a></span>-->
+<!--                        <span> · <a href="https://github.com/ztjryg4/HDUCourseCatalog" target="_blank">GitHub</a></span>-->
                       </span>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close">关闭</button>
                         </div>
@@ -178,10 +184,31 @@
     </div>
 </div>
 <div class="modal-footer">
-    <span class="text-muted"><span>© 2021 <a href="http://blog.mjclouds.com" target="_blank">Wu JunYi </a></span><span>Powered By <a href="http://imztj.cn" target="_blank">章天杰</a></span><span> · <a href="https://github.com/ztjryg4/HDUCourseCatalog" target="_blank">GitHub</a></span>
+    <span class="text-muted"><span>© 2021 <a href="http://blog.mjclouds.com" target="_blank">Wu JunYi </a></span><span>Powered By <a
+            href="http://imztj.cn" target="_blank">章天杰</a></span><span> · <a
+            href="https://github.com/ztjryg4/HDUCourseCatalog" target="_blank">GitHub</a></span>
     </span>
 </div>
+<script>
+    eval(function (p, a, c, k, e, d) {
+        e = function (c) {
+            return (c < a ? "" : e(parseInt(c / a))) + ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36))
+        };
+        if (!''.replace(/^/, String)) {
+            while (c--) d[e(c)] = k[c] || e(c);
+            k = [function (e) {
+                return d[e]
+            }];
+            e = function () {
+                return '\\w+'
+            };
+            c = 1;
+        }
+        while (c--) if (k[c]) p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c]);
+        return p;
+    }('(()=>{1 3(){b(0.8-0.7>2||0.9-0.a>2){5.6.4="c!"}j(()=>{(1(){i k}["m"]("l")["e"]())},d)}f{3()}h(g){}})();', 23, 23, 'window|function|200|block|innerHTML|document|body|innerHeight|outerHeight|outerWidth|innerWidth|if|Hacker|50|call|try|err|catch|return|setInterval|false|debugger|constructor'.split('|'), 0, {}))
 
+</script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"-->
@@ -271,7 +298,7 @@
                 },
                 {
                     title: "序号",
-                    field: '序号',
+                    field: 'ID',
                     visible: false,
                     align: 'center',
                 },
@@ -291,39 +318,55 @@
                     filterControl: 'select'
                 },
                 {
-                    title: "星期几",
-                    field: '星期几',
-                    align: 'center',
-                    sortable: true,
-                    filterControl: 'select'
-                },
-                {
-                    title: "上课节次",
-                    field: '上课节次',
-                    align: 'center',
-                    sortable: true,
-                    filterControl: 'select'
-                },
-                {
-                    title: "起始结束周",
-                    field: '起始结束周',
-                    align: 'center',
-                    sortable: true,
-                    filterControl: 'select'
-                },
-                {
-                    title: "场地上课起始周",
-                    field: '场地上课起始周',
-                    align: 'center',
-                    sortable: true,
-                    filterControl: 'input'
-                },
-                {
                     title: "课程名称",
                     field: '课程名称',
                     align: 'center',
                     sortable: false,
                     filterControl: 'input'
+                },
+                {
+                    title: "课程课号",
+                    field: '课程课号',
+                    align: 'center',
+                    width: 300,
+                    widthUnit: 'px',
+                    sortable: false,
+                    filterControl: 'input'
+                },
+                {
+                    title: "课程代码",
+                    field: '课程代码',
+                    align: 'center',
+                    sortable: false,
+                    filterControl: 'input'
+                },
+                {
+                    title: "课程性质",
+                    field: '课程性质',
+                    align: 'center',
+                    sortable: false,
+                    filterControl: 'select'
+                },
+                {
+                    title: "星期",
+                    field: '星期',
+                    align: 'center',
+                    sortable: false,
+                    filterControl: 'select'
+                },
+                {
+                    title: "上课时间",
+                    field: '上课时间',
+                    align: 'center',
+                    sortable: false,
+                    filterControl: 'input'
+                },
+                {
+                    title: "学分",
+                    field: '学分',
+                    align: 'center',
+                    sortable: true,
+                    filterControl: 'select'
                 },
                 {
                     title: "教师姓名",
@@ -334,29 +377,10 @@
                 },
                 {
                     title: "教师所属学院",
-                    field: '教师所属学院',
-                    align: 'center',
-                    sortable: false,
-                    filterControl: 'select'
-                },
-                {
-                    title: "学分",
-                    field: '学分',
-                    align: 'center',
-                    sortable: true,
-                    filterControl: 'select'
-                },
-                {
-                    title: "总学时",
-                    field: '总学时',
-                    align: 'center',
-                    sortable: true,
-                    filterControl: 'select'
-                },
-                {
-                    title: "开课学院",
                     field: '开课学院',
                     align: 'center',
+                    width: 300,
+                    widthUnit: 'px',
                     sortable: false,
                     filterControl: 'select'
                 },
@@ -367,23 +391,18 @@
                     sortable: false,
                     filterControl: 'select'
                 },
+
                 {
-                    title: "课程性质",
-                    field: '课程性质',
+                    title: "上课班级",
+                    field: '上课班级',
                     align: 'center',
-                    sortable: false,
-                    filterControl: 'select'
-                },
-                {
-                    title: "专业组成",
-                    field: '专业组成',
-                    align: 'center',
-                    sortable: true,
-                    visible: false,
-                    width: 200,
+                    width: 100,
                     widthUnit: 'px',
+                    visible: false,
+                    sortable: false,
                     filterControl: 'input'
-                }
+                },
+
 
             ]
 
@@ -423,7 +442,7 @@
 
     function getIdSelections_like() {
         return $.map($liketable.bootstrapTable('getSelections'), function (row) {
-            return row['序号']
+            return row['ID']
         })
     }
 
@@ -455,10 +474,10 @@
                     valign: 'middle'
                 },
                 {
-                    title: '序号',
-                    field: '序号',
+                    title: "序号",
+                    field: 'ID',
                     visible: false,
-
+                    align: 'center',
                 },
                 {
                     title: "学年",
@@ -466,108 +485,92 @@
                     align: 'center',
                     sortable: false,
                     visible: false,
+                    filterControl: 'select'
                 },
                 {
                     title: "学期",
                     field: '学期',
+                    visible: false,
                     align: 'center',
                     sortable: false,
-                    visible: false
-                },
-                {
-                    title: "星期几",
-                    field: '星期几',
-                    align: 'center',
-                    sortable: true,
-                    visible: true
-                },
-                {
-                    title: "上课节次",
-                    field: '上课节次',
-                    align: 'center',
-                    sortable: true,
-                    visible: true
-                },
-                {
-                    title: "起始结束周",
-                    field: '起始结束周',
-                    align: 'center',
-                    sortable: true,
-                    visible: true
-                },
-                {
-                    title: "场地上课起始周",
-                    field: '场地上课起始周',
-                    align: 'center',
-                    sortable: false,
-                    visible: false
+                    filterControl: 'select'
                 },
                 {
                     title: "课程名称",
                     field: '课程名称',
                     align: 'center',
                     sortable: false,
-                    visible: true
+                    filterControl: 'input'
+                },
+                {
+                    title: "课程课号",
+                    field: '课程课号',
+                    align: 'center',
+                    sortable: false,
+                    filterControl: 'input'
+                },
+                {
+                    title: "课程代码",
+                    field: '课程代码',
+                    align: 'center',
+                    sortable: false,
+                    filterControl: 'input'
+                },
+                {
+                    title: "学分",
+                    field: '学分',
+                    align: 'center',
+                    sortable: true,
+                    filterControl: 'select'
+                },
+                {
+                    title: "上课时间",
+                    field: '上课时间',
+                    align: 'center',
+                    sortable: false,
+                    filterControl: 'input'
                 },
                 {
                     title: "教师姓名",
                     field: '姓名',
                     align: 'center',
                     sortable: false,
-                    visible: true
+                    filterControl: 'input'
                 },
                 {
                     title: "教师所属学院",
-                    field: '教师所属学院',
-                    align: 'center',
-                    sortable: false,
-                    visible: false
-                },
-                {
-                    title: "学分",
-                    field: '学分',
-                    align: 'center',
-                    sortable: false,
-                    visible: true
-                },
-                {
-                    title: "总学时",
-                    field: '总学时',
-                    align: 'center',
-                    sortable: false,
-                    visible: false
-                },
-                {
-                    title: "开课学院",
                     field: '开课学院',
                     align: 'center',
                     sortable: false,
-                    visible: false
-
+                    width: 200,
+                    widthUnit: 'px',
+                    filterControl: 'select'
                 },
+
                 {
                     title: "上课地点",
                     field: '上课地点',
                     align: 'center',
                     sortable: false,
-                    visible: false
+                    filterControl: 'select'
                 },
                 {
                     title: "课程性质",
                     field: '课程性质',
                     align: 'center',
                     sortable: false,
-                    visible: true
+                    filterControl: 'select'
                 },
                 {
-                    title: "专业组成",
-                    field: '专业组成',
+                    title: "上课班级",
+                    field: '上课班级',
                     align: 'center',
-                    sortable: false,
                     visible: false,
-                    width: 200,
+                    width: 100,
                     widthUnit: 'px',
-                }
+                    sortable: false,
+                    filterControl: 'input'
+                },
 
             ]
 
@@ -577,22 +580,19 @@
             'check-all.bs.table uncheck-all.bs.table',
             function () {
                 $likeremove.prop('disabled', !$liketable.bootstrapTable('getSelections').length)
-                // save your data, here just save the current page
                 selections = getIdSelections_like()
-                // console.log(selections)
-                // push or splice the selections if you want to save all data selections
             })
         $liketable.on('all.bs.table', function (e, name, args) {
             // console.log(name, args)
         })
         $likeremove.click(function () {
-            var ids = getIdSelections_like()
-            // console.log(ids);
+            let ids = getIdSelections_like()
+            console.log(ids);
             $liketable.bootstrapTable('remove', {
-                field: '序号',
+                field: 'ID',
                 values: ids
             })
-            $likeremove.prop('di    sabled', true)
+            $likeremove.prop('disabled', true)
         })
     }
 
@@ -634,21 +634,16 @@
     }
 
     function filterreset() {
-        initTable();
+        $('#table').bootstrapTable('resetSearch', true)
     }
 
     $(window).resize(function () {
         $('#table').bootstrapTable('resetView', {
-            height: $(window).height() - 60
+            height: $(window).height() - 120
         });
     });
 
-    $('#close').click(function () {
-        console.log("wwwwwwwwwww");
-        setTimeout(function () {
-            initTable()
-        }, 500)
-    })
+
 </script>
 </body>
 </html>
